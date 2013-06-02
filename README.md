@@ -1,10 +1,10 @@
 Project Switcher for WAMP
 ==================
-Switch root `www` directories easily without folder renaming
+Switch root `www` directories easily without renaming folders
 
 ## Usage
 
-Move `projectswitch.bat` to WAMP installation directory (ex: C:\wamp) and run.
+Move `projectswitch.bat` or `bin/projectswitch.exe` to WAMP installation directory (ex: C:\wamp) and run. Program will automatically create `webx` folder, where you will store your root directories.
 
-Program will automatically create `webx` folder, where you will store your root directories.
-**Example:** If you have two projects `my-website` and `project1` and
+**Example:** You have two different projects (websites) `my-website` and `project1`. You have `project1` files in your www folder. So if you want to run `my-website` on localhost, you are replacing source www folder's source files.
+

@@ -1,5 +1,11 @@
 @ECHO off
+TITLE Project Switcher for WAMP
 :STARTPOINT
+IF NOT EXIST wampmanager.exe (
+    ECHO This is not a WAMP installation directory.
+    GOTO NONWAMPDIR
+)
+:DIRTEST
 IF NOT EXIST webx (
     MKDIR webx
     IF EXIST www (
@@ -8,9 +14,6 @@ IF NOT EXIST webx (
     )
     CLS
 )
-:INTRO
-echo ProjectSwitch by Stichoza [me@stichoza.com]
-@echo.
 :ENTERNAME
 SET /P PROJECTNAME=Enter directory name: 
 @RMDIR www
@@ -22,4 +25,9 @@ IF NOT EXIST webx\%PROJECTNAME% (
 MKLINK /D /H /J www webx\%PROJECTNAME%
 ECHO Press any key to exit.
 PAUSE>nul
+:EXIT
 EXIT
+#DEFINE_RETURNING_BLOCKS
+:NONWAMPDIR
+SET /P NONWAMP=Continue? (y/n) 
+IF %NONWAMP%==y (GOTO DIRTEST) ELSE (GOTO EXIT)
