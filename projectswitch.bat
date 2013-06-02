@@ -22,6 +22,4 @@ IF NOT EXIST webx\%PROJECTNAME% (
 MKLINK /D /H /J www webx\%PROJECTNAME%
 ECHO Press any key to exit.
 PAUSE>nul
-GOTO QUIT
-:QUIT
 EXIT
