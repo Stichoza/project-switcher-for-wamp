@@ -1,5 +1,7 @@
 @ECHO off
 TITLE Project Switcher for WAMP
+ECHO Project Switcher for WAMP by Stichoza ^<me@stichoza.com^>
+ECHO.
 :STARTPOINT
 IF NOT EXIST wampmanager.exe (
     ECHO This is not a WAMP installation directory.
@@ -7,19 +9,23 @@ IF NOT EXIST wampmanager.exe (
 )
 :DIRTEST
 IF NOT EXIST webx (
+	ECHO Initialising ProjectSwitcher...
     MKDIR webx
+	ECHO Created directory webx
     IF EXIST www (
         MOVE www webx
         MKLINK /D /H /J www webx\www
     )
-    CLS
+    REM CLS
 )
 :ENTERNAME
 SET /P PROJECTNAME=Enter directory name: 
-@RMDIR www
+IF EXIST www RMDIR www
 IF NOT EXIST webx\%PROJECTNAME% (
     CD webx
+	ECHO Directory "%PROJECTNAME%" does not exist in webx.
     MKDIR %PROJECTNAME%
+	ECHO Created directory "%PROJECTNAME%".
     CD ..
 )
 MKLINK /D /H /J www webx\%PROJECTNAME%
